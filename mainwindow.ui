@@ -94,7 +94,7 @@
      <string notr="true">font: 12pt; color:rgb(255, 255, 255)</string>
     </property>
     <property name="text">
-     <string>intput:</string>
+     <string>input:</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
