@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <cmath>
+#include <exception>
+#include <QDebug>
 
 class RadixConverter
 {

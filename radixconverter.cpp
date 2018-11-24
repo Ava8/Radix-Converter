@@ -16,13 +16,21 @@ int RadixConverter::toDecimal(int notation, QString num)
         for (int i = lenght - 1; i >= 0; i--) {
                   for(int j = 0; j < 22; j++) {
                       if(num[i] == alphabet[j]) {
+                          if(numeric[j] >= notation) {
+                              throw std::runtime_error("wrong input");
+                          }
                           resault += numeric[j] * pow(notation,power);
                           power++;
+
                         }
                     }
                 }
     } else {
         for (int i = lenght - 1; i >= 0; i--) {
+            qDebug() << num[i].digitValue() << endl;
+            if(num[i].digitValue() >= notation) {
+                throw std::runtime_error("wrong input");
+            }
             resault += (num[i].digitValue()) * pow(notation, power);
             power++;
         }
@@ -33,7 +41,12 @@ int RadixConverter::toDecimal(int notation, QString num)
 
 QString RadixConverter::toBase(int sourceNotation, int destinationNotation, QString num)
 {
-    int numToDecimal = this->toDecimal(sourceNotation,num);
+    int numToDecimal;
+    try {
+    numToDecimal = this->toDecimal(sourceNotation,num);
+    } catch(std::runtime_error) {
+        return "wrong input";
+    }
     int mod = 0;
     QString resault;
 
@@ -54,3 +67,22 @@ QString RadixConverter::toBase(int sourceNotation, int destinationNotation, QStr
 
     return reverseResault;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

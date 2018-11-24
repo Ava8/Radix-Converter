@@ -29,11 +29,14 @@ void MainWindow::on_convertButton_clicked()
     converter = new RadixConverter;
 
     if (sourceNotation == destinationNotation) {
-        ui->resaultLabel->setText(num);
-    } else if (destinationNotation == 10) {
-        int r = 0;
-        r = converter->toDecimal(sourceNotation,num);
-        ui->resaultLabel->setText(QString("%1").arg(r));
+        for (int i = num.length() - 1; i >= 0; i--) {
+            if(num[i] >= sourceNotation) {
+                ui->resaultLabel->setText("wrong input");
+            } else {
+                ui->resaultLabel->setText(num);
+            }
+        }
+
     } else {
         ui->resaultLabel->setText(converter->toBase(sourceNotation,destinationNotation,num));
     }
