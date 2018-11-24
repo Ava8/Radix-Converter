@@ -151,7 +151,7 @@
      <string notr="true">font: 12pt; color:rgb(255, 255, 255)</string>
     </property>
     <property name="text">
-     <string>resault:</string>
+     <string>result:</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
